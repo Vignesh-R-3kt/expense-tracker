@@ -25,27 +25,27 @@
                         *ngIf="!isExpenseEditable"><mat-icon>add</mat-icon></button>
                 </div>
                 <h3 *ngIf="!isExpenseEditable">{{values.expense| currencyFormatter}}</h3>
-                <form *ngIf="isExpenseEditable">
+                <form [formGroup]="expenseForm" *ngIf="isExpenseEditable" (submit)="fetchFormData()">
                     <mat-form-field appearance="outline">
                         <mat-label>Select date</mat-label>
-                        <input matInput [matDatepicker]="picker" (click)="picker.open()">
+                        <input matInput [matDatepicker]="picker" (click)="picker.open()" formControlName="date">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Expense Amount</mat-label>
-                        <input matInput type="number" placeholder="Enter amount">
+                        <input matInput type="number" placeholder="Enter amount" formControlName="amount">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Expense Description</mat-label>
-                        <input matInput placeholder="Enter expense description">
+                        <input matInput placeholder="Enter expense description" formControlName="description">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Expense Category</mat-label>
-                        <mat-select>
+                        <mat-select formControlName="category">
                             <mat-option value="food">Food</mat-option>
                             <mat-option value="travel">Travel</mat-option>
                             <mat-option value="bike">Bike</mat-option>
@@ -53,13 +53,15 @@
                             <mat-option value="others">Others</mat-option>
                         </mat-select>
                     </mat-form-field>
+
+                    <div class="btns-wrapper" *ngIf="isExpenseEditable">
+                        <button mat-raised-button *ngIf="isExpenseEditable" class="add-btn" type="submit"
+                            [disabled]="!expenseForm.valid"><mat-icon>send</mat-icon> Submit</button>
+                        <button mat-raised-button (click)="isExpenseEditable = false" *ngIf="isExpenseEditable"
+                            class="close-btn"><mat-icon>close</mat-icon> Cancel</button>
+                    </div>
                 </form>
-                <div class="btns-wrapper" *ngIf="isExpenseEditable">
-                    <button mat-raised-button (click)="isExpenseEditable = false" *ngIf="isExpenseEditable"
-                        class="add-btn"><mat-icon>send</mat-icon> Submit</button>
-                    <button mat-raised-button (click)="isExpenseEditable = false" *ngIf="isExpenseEditable"
-                        class="close-btn"><mat-icon>close</mat-icon> Cancel</button>
-                </div>
+
             </li>
 
             <!-- Balance Card -->

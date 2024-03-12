@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalculationService } from 'src/app/services/calculation.service';
 import { amounts } from 'src/app/shared/interface';
 
@@ -20,7 +21,16 @@ export class DashboardComponent implements OnInit {
     balance: 0
   }
 
-  constructor(private calculation: CalculationService) { }
+  expenseForm: FormGroup;
+
+  constructor(private calculation: CalculationService, private fb: FormBuilder) {
+    this.expenseForm = this.fb.group({
+      date: ["", [Validators.required]],
+      amount: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+      category: ["", [Validators.required]]
+    })
+  }
 
   ngOnInit(): void {
     this.calculation.getAmountDetails().subscribe((res: amounts) => {
@@ -39,6 +49,13 @@ export class DashboardComponent implements OnInit {
   saveIncomeData() {
     this.isIncomeEditable = false;
     this.calculation.updateAmountValue(this.values);
+  }
+
+  fetchFormData() {
+    const formValue = this.expenseForm.value;
+    console.log(formValue);
+    this.expenseForm.reset();
+    this.isExpenseEditable = false;
   }
 
 }
