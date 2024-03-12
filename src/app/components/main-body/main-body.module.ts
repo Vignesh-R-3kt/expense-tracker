@@ -6,6 +6,7 @@ import { MainBodyRoutingModule } from './main-body-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CurrencyFormatterPipe } from 'src/app/pipes/currency-formatter.pipe';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CurrencyFormatterPipe } from 'src/app/pipes/currency-formatter.pipe';
     CommonModule,
     MainBodyRoutingModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ]
 })
 export class MainBodyModule { }

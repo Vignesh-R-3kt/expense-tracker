@@ -4,7 +4,7 @@
             <h2 class="title">Category Details</h2>
         </div>
         <ul class="cards-wrapper">
-            <li class="income-card">
+            <li class="income-card" [ngClass]="{'disable' : isExpenseEditable}">
                 <div class="card-title">
                     <h4>Total Income</h4>
                     <button *ngIf="!isIncomeEditable" (click)="enableEditMode()"><mat-icon>edit</mat-icon></button>
@@ -14,14 +14,22 @@
                 <input type="number" #inputField [(ngModel)]="values.income" placeholder="Enter Income"
                     *ngIf="isIncomeEditable">
             </li>
-            <li class="expense-card">
+            <li class="expense-card" [ngClass]="{'enable' : isExpenseEditable}">
                 <div class="card-title">
-                    <h4>Total Expenses</h4>
-                    <button><mat-icon>add</mat-icon></button>
+                    <h4>{{ isExpenseEditable ? "Add New Expense" : "Total Expenses"}}</h4>
+                    <button (click)="isExpenseEditable = true"
+                        *ngIf="!isExpenseEditable"><mat-icon>add</mat-icon></button>
                 </div>
-                <h3>{{values.expense| currencyFormatter}}</h3>
+                <h3 *ngIf="!isExpenseEditable">{{values.expense| currencyFormatter}}</h3>
+                <div class="btns-wrapper" *ngIf="isExpenseEditable">
+                    <button mat-raised-button (click)="isExpenseEditable = false" *ngIf="isExpenseEditable"
+                        class="add-btn"><mat-icon>add</mat-icon> Add</button>
+                    <button mat-raised-button (click)="isExpenseEditable = false" *ngIf="isExpenseEditable"
+                        class="close-btn"><mat-icon>close</mat-icon> Cancel</button>
+                </div>
+
             </li>
-            <li class="balance-card">
+            <li class="balance-card" [ngClass]="{'disable' : isExpenseEditable}">
                 <div class="card-title">
                     <h4>Balance</h4>
                 </div>
