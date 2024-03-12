@@ -4,7 +4,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { MainBodyRoutingModule } from './main-body-routing.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,

@@ -1,0 +1,17 @@
+.not-found-container {
+  background: url("../../../assets/images/non-found-bg.png") no-repeat;
+  background-size: contain;
+  background-position: right center;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 5%;
+
+  a {
+    border: 1px solid #006aff;
+    color: #006aff;
+    padding: 14px 32px;
+    font-size: 18px;
+    border-radius: 6px;
+  }
+}

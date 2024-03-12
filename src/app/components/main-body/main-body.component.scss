@@ -1,0 +1,13 @@
+.main-body-container {
+  height: 100vh;
+  display: flex;
+
+  .navbar-wrapper {
+    width: 180px;
+    background: #191919;
+  }
+
+  .main-content-wrapper {
+    flex-grow: 1;
+  }
+}
