@@ -1,3 +1,4 @@
+import { GoogleAuthService } from './../../../services/google-auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  constructor(private googleAuth: GoogleAuthService) { }
+
+  logout() {
+    this.googleAuth.logout();
+  }
 }

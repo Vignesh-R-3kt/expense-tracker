@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAuthService {
 
-  constructor(private googleAuth: AngularFireAuth, private router: Router) { }
+  constructor(private googleAuth: AngularFireAuth, private router: Router, private snakbar: SnackbarService) { }
 
   login() {
     this.googleAuth.signInWithPopup(new GoogleAuthProvider).then((res: any) => {
@@ -23,6 +24,7 @@ export class GoogleAuthService {
     this.googleAuth.signOut().then((res: any) => {
       sessionStorage.clear();
       this.router.navigate(['login']);
+      this.snakbar.success('Successfully logged out')
     })
   }
 }

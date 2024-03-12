@@ -11,7 +11,7 @@ import { MainBodyRoutingModule } from './main-body-routing.module';
   ],
   imports: [
     CommonModule,
-    MainBodyRoutingModule
+    MainBodyRoutingModule,
   ]
 })
 export class MainBodyModule { }

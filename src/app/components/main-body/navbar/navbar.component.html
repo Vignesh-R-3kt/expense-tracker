@@ -4,11 +4,15 @@
     </div>
 
     <ul class="navitems-wrapper">
-        <li>
-            <a> <mat-icon>dashboard</mat-icon> Dashboard</a>
+        <li routerLinkActive="active">
+            <a routerLink="./dashboard"> <mat-icon>dashboard</mat-icon> <span>Dashboard</span> </a>
         </li>
-        <li>
-            <a>Statistics</a>
+        <li routerLinkActive="active">
+            <a routerLink="./statistics"><mat-icon> map</mat-icon> <span>Statistics</span> </a>
         </li>
     </ul>
+
+    <div class="logout-wrapper">
+        <button mat-raised-button (click)="logout()"><mat-icon>power_settings_new</mat-icon> Logout</button>
+    </div>
 </div>
