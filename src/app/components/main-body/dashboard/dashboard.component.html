@@ -28,7 +28,8 @@
                 <form [formGroup]="expenseForm" *ngIf="isExpenseEditable" (submit)="fetchFormData()">
                     <mat-form-field appearance="outline">
                         <mat-label>Select date</mat-label>
-                        <input matInput [matDatepicker]="picker" (click)="picker.open()" formControlName="date">
+                        <input [max]="todayDate" matInput [matDatepicker]="picker" (click)="picker.open()"
+                            formControlName="date">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
