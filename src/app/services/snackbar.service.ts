@@ -9,8 +9,8 @@ export class SnackbarService {
   constructor(private snackbar: MatSnackBar) { }
 
   success(message: string) {
-    this.snackbar.open(message, 'Splash', {
-      duration: 200000,
+    this.snackbar.open(message, 'dismiss', {
+      duration: 2000,
       horizontalPosition: 'end',
       verticalPosition: 'top',
       panelClass: 'success-message'
@@ -18,8 +18,8 @@ export class SnackbarService {
   }
 
   error(message: string) {
-    this.snackbar.open(message, 'Splash', {
-      duration: 200000,
+    this.snackbar.open(message, 'dismiss', {
+      duration: 2000,
       horizontalPosition: 'end',
       verticalPosition: 'top',
       panelClass: 'error-message'
