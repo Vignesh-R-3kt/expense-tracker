@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalculationService } from 'src/app/services/calculation.service';
-import { amounts } from 'src/app/shared/interface';
+import { amounts, expense } from 'src/app/shared/interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +21,8 @@ export class DashboardComponent implements OnInit {
     balance: 0
   }
 
+  expenses: expense[] = [];
+
   expenseForm: FormGroup;
 
   constructor(private calculation: CalculationService, private fb: FormBuilder) {
@@ -36,6 +38,9 @@ export class DashboardComponent implements OnInit {
     this.calculation.getAmountDetails().subscribe((res: amounts) => {
       this.values = res;
     });
+    this.calculation.getExpensesDetails().subscribe((res: expense[]) => {
+      this.expenses = res.reverse();
+    })
     this.calculation.setInitialValue();
   }
 
@@ -52,10 +57,17 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchFormData() {
-    const formValue = this.expenseForm.value;
-    console.log(formValue);
+    const formValue: expense = this.expenseForm.value;
+    const date = this.formatDate(formValue.date);
+    formValue.date = date;
     this.expenseForm.reset();
     this.isExpenseEditable = false;
+    this.calculation.updateExpenseValue(formValue);
+  }
+
+  formatDate(date: any) {
+    const userDate = new Date(date);
+    return `${userDate.getDate().toString().padStart(2, '0')}-${(userDate.getMonth() + 1).toString().padStart(2, '0')}-${userDate.getFullYear()} `;
   }
 
 }
