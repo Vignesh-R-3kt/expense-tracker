@@ -9,7 +9,7 @@ import { amounts } from 'src/app/shared/interface';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  todayDate: Date = new Date();
   isIncomeEditable: boolean = false;
   isExpenseEditable: boolean = false;
 
