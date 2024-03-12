@@ -54,6 +54,22 @@
           &::after {
             background: #00c24e;
           }
+
+          input {
+            font-size: 22px;
+            margin-top: 12px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            padding: 4px;
+            font-weight: 700;
+
+            &::placeholder {
+              font-weight: 400;
+              font-size: 14px;
+              color: #a2a1a1;
+            }
+          }
         }
 
         &.expense-card {

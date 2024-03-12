@@ -7,22 +7,25 @@
             <li class="income-card">
                 <div class="card-title">
                     <h4>Total Income</h4>
-                    <button><mat-icon>edit</mat-icon></button>
+                    <button *ngIf="!isIncomeEditable" (click)="enableEditMode()"><mat-icon>edit</mat-icon></button>
+                    <button *ngIf="isIncomeEditable" (click)="saveIncomeData()"><mat-icon>save</mat-icon></button>
                 </div>
-                <h3>₹ 20,000</h3>
+                <h3 *ngIf="!isIncomeEditable">{{values.income| currencyFormatter}}</h3>
+                <input type="number" #inputField [(ngModel)]="values.income" placeholder="Enter Income"
+                    *ngIf="isIncomeEditable">
             </li>
             <li class="expense-card">
                 <div class="card-title">
                     <h4>Total Expenses</h4>
                     <button><mat-icon>add</mat-icon></button>
                 </div>
-                <h3>₹ 5,000</h3>
+                <h3>{{values.expense| currencyFormatter}}</h3>
             </li>
             <li class="balance-card">
                 <div class="card-title">
                     <h4>Balance</h4>
                 </div>
-                <h3>₹ 15,000</h3>
+                <h3>{{values.balance| currencyFormatter}}</h3>
             </li>
         </ul>
     </div>
