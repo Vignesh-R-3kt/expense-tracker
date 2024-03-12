@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 40%;
+    background: #191919;
+    color: #ffffff;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 38px;
+      height: 38px;
+      border-top: 2px solid #ccc;
+      top: 24px;
+      left: 24px;
+      border-left: 2px solid #ccc;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 38px;
+      height: 38px;
+      bottom: 24px;
+      right: 24px;
+      border-bottom: 2px solid #ccc;
+      border-right: 2px solid #ccc;
+    }
+
+    .textWrapper {
+      padding: 20px 86px 0 86px;
+      font-weight: 700;
+
+      .topText {
+        display: block;
+        font-weight: 500;
+        color: 191919;
+        font-size: 40px;
+      }
+      .middleText {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 34px;
+        margin-bottom: 34px;
+        line-height: 46px;
+        font-weight: 200;
+
+        span {
+          color: #6aa2fc;
+          font-weight: 700;
+          display: block;
+          letter-spacing: 1px;
+        }
+      }
+      .bottomText {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 60%;
+
+    button {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 42px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #0000009f;
+      border-radius: 8px;
+      border: none;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      background: #ffffff;
+
+      img {
+        height: 24px;
+        width: 24px;
+        object-fit: contain;
+      }
+    }
+  }
+}
