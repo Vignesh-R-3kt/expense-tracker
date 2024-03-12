@@ -7,12 +7,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './components/login/login.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainBodyComponent
+    MainBodyComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
