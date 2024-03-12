@@ -10,7 +10,7 @@ import { amounts } from 'src/app/shared/interface';
 export class DashboardComponent implements OnInit {
 
   isIncomeEditable: boolean = false;
-  isExpenseEditable: boolean = false;
+  isExpenseEditable: boolean = true;
 
   @ViewChild('inputField', { static: false }) inputField: ElementRef;
 
