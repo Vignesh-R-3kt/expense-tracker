@@ -6,7 +6,7 @@ import { MainBodyComponent } from './components/main-body/main-body.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'main-body', component: MainBodyComponent },
+  { path: 'main-body', loadChildren: () => import('./components/main-body/main-body.module').then(m => m.MainBodyModule) },
   { path: '**', redirectTo: 'login' }
 ];
 
