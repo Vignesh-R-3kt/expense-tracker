@@ -1,0 +1,107 @@
+.dashboard-container {
+  display: flex;
+  height: 100%;
+
+  .cards-container {
+    background: #f8f7f1;
+    width: 30%;
+    padding: 38px 24px;
+    display: flex;
+    flex-direction: column;
+
+    .title-section {
+      margin-bottom: 12px;
+
+      .title {
+        font-size: 24px;
+        font-weight: 500;
+        color: #525256;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #cccccc50;
+        padding-bottom: 12px;
+      }
+    }
+
+    .cards-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+
+      li {
+        background: #ffffff;
+        flex-grow: 1;
+        border-radius: 8px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        height: 33.3333333%;
+        padding: 16px 18px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #cccccc;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          top: 4px;
+          left: 4px;
+        }
+
+        &.income-card {
+          &::after {
+            background: #00c24e;
+          }
+        }
+
+        &.expense-card {
+          &::after {
+            background: #f74242;
+          }
+        }
+
+        &.balance-card {
+          &::after {
+            background: #006aff;
+          }
+        }
+
+        .card-title {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 8px;
+          margin-bottom: 12px;
+          border-bottom: 2px solid #ebebeb;
+
+          h4 {
+            font-size: 16px;
+            line-height: 1;
+            color: #656565;
+            font-weight: 400;
+            padding: 4px 6px;
+          }
+
+          button {
+            all: unset;
+            cursor: pointer;
+
+            mat-icon {
+              font-size: 18px;
+              color: #525256;
+            }
+          }
+        }
+
+        h3 {
+          font-size: 26px;
+          text-align: center;
+          margin-top: auto;
+          line-height: 60px;
+          color: #191919;
+        }
+      }
+    }
+  }
+}

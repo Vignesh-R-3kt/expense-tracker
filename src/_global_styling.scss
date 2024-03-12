@@ -39,3 +39,25 @@ input[type="number"] {
 .mdc-snackbar.mat-mdc-snack-bar-container {
   margin-top: 38px;
 }
+
+.mat-icon.material-icons {
+  width: unset;
+  height: unset;
+}
+
+.dashboard-container {
+  position: relative;
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
