@@ -176,55 +176,64 @@
 
     .table-wrapper {
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      padding: 12px;
+      padding: 24px 12px;
       margin-bottom: 18px;
       border-radius: 4px;
       height: 60%;
-      overflow-y: auto;
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
+      .table {
+        max-height: 100%;
+        overflow-y: auto;
 
-        tr {
-          th {
-            color: #656575;
-            font-size: 12px;
-            font-weight: 300;
-            padding: 12px;
-            border-bottom: 1px solid #e8e8e8;
-            text-align: left;
-          }
+        table {
+          width: 100%;
+          border-collapse: collapse;
 
-          td {
-            font-size: 12px;
-            color: #191919;
-            padding: 8px 12px;
-            text-transform: capitalize;
-            font-weight: 400;
-            border-bottom: 1px solid #e8e8e8;
-            text-wrap: wrap;
-
-            &.category {
-              font-weight: 300;
-            }
-
-            button {
-              background: #ff2727;
-              color: #ffffff;
-              border: none;
-              padding: 4px 8px;
-              border-radius: 4px;
-              font-size: 10px;
-            }
-          }
-        }
-
-        tbody {
           tr {
-            &:last-child {
-              td {
+            th {
+              color: #656575;
+              font-size: 12px;
+              font-weight: 300;
+              padding: 12px;
+              border-bottom: 1px solid #e8e8e8;
+              text-align: left;
+            }
+
+            td {
+              font-size: 12px;
+              color: #191919;
+              padding: 8px 12px;
+              text-transform: capitalize;
+              font-weight: 400;
+              border-bottom: 1px solid #e8e8e8;
+              text-wrap: wrap;
+
+              &.category {
+                font-weight: 300;
+              }
+
+              &.description {
+                width: 35%;
+                line-height: 1.2;
+              }
+
+              button {
+                background: #ff2727;
+                color: #ffffff;
                 border: none;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 10px;
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              &:last-child {
+                td {
+                  border: none;
+                }
               }
             }
           }
