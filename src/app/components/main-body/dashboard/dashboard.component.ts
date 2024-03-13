@@ -77,7 +77,8 @@ export class DashboardComponent implements OnInit {
 
   deleteData(index: any) {
     const deleteDialog = this.dialog.open(DeleteDialogComponent, {
-      disableClose: false
+      disableClose: false,
+      autoFocus: false,
     });
 
     deleteDialog.afterClosed().subscribe((res: any) => {
