@@ -75,6 +75,32 @@
         </ul>
     </div>
     <div class="expense-details-container">
-
+        <div class="top-section">
+            <h4>Expenses Details</h4>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let expense of expenses; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{expense.amount}}</td>
+                        <td>{{expense.date}}</td>
+                        <td class="category">{{expense.category }}</td>
+                        <td>{{expense.description}}</td>
+                        <td><button>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

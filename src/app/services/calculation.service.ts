@@ -15,7 +15,7 @@ export class CalculationService {
   setInitialValue() {
     this.amounts.next({
       income: 0,
-      expense: 5000,
+      expense: 0,
       balance: 0
     });
 
