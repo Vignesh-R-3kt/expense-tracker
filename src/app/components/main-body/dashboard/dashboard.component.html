@@ -24,6 +24,8 @@
                     <h4>{{ isExpenseEditable ? "Add New Expense" : "Total Expenses"}}</h4>
                     <button (click)="isExpenseEditable = true"
                         *ngIf="!isExpenseEditable"><mat-icon>add</mat-icon></button>
+                    <span class="balance-small-text" *ngIf="isExpenseEditable">Balance : {{ balanceAmt |
+                        currencyFormatter}}</span>
                 </div>
                 <h3 *ngIf="!isExpenseEditable">{{expenseAmt | currencyFormatter}}</h3>
                 <form [formGroup]="expenseForm" *ngIf="isExpenseEditable" (submit)="fetchFormData()">
