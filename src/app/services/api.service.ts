@@ -14,13 +14,12 @@ export class ApiService {
     this.userID = userInfo.user.uid;
   }
 
-
   fetchUserdata() {
     return this.http.get(`${this.apiEndPoint}/${this.userID}.json`);
   }
 
   sendUserData(data: any) {
-    return this.http.put(`${this.apiEndPoint}/${this.userID}.json`, JSON.stringify(data));
+    return this.http.put(`${this.apiEndPoint}/${this.userID}.json`, data);
   }
 
 }

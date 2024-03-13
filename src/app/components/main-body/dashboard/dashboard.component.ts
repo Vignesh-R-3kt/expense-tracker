@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-import { CalculationService } from 'src/app/services/calculation.service';
 import { amounts, expense } from 'src/app/shared/interface';
 
 @Component({
@@ -13,20 +12,18 @@ export class DashboardComponent implements OnInit {
   todayDate: Date = new Date();
   isIncomeEditable: boolean = false;
   isExpenseEditable: boolean = false;
+  incomeAmt: number = 0;
+  expenseAmt: number = 0;
+  balanceAmt: number = 0;
 
   @ViewChild('inputField', { static: false }) inputField: ElementRef;
 
-  values: amounts = {
-    income: 0,
-    expense: 0,
-    balance: 0
-  }
 
   expenses: expense[] = [];
 
   expenseForm: FormGroup;
 
-  constructor(private calculation: CalculationService, private fb: FormBuilder, private api: ApiService) {
+  constructor(private fb: FormBuilder, private api: ApiService) {
     this.expenseForm = this.fb.group({
       date: ["", [Validators.required]],
       amount: ["", [Validators.required]],
@@ -36,13 +33,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.calculation.getAmountDetails().subscribe((res: amounts) => {
-      this.values = res;
-    });
-    this.calculation.getExpensesDetails().subscribe((res: expense[]) => {
-      this.expenses = res.reverse();
+    this.api.fetchUserdata().subscribe((res: any) => {
+      if (res) {
+        this.incomeAmt = res.amounts.income;
+        this.expenseAmt = res.amounts.expense;
+        this.balanceAmt = res.amounts.balance;
+        this.expenses = JSON.parse(res.expenses);
+      }
     })
-    this.calculation.setInitialValue();
   }
 
   enableEditMode() {
@@ -54,7 +52,7 @@ export class DashboardComponent implements OnInit {
 
   saveIncomeData() {
     this.isIncomeEditable = false;
-    this.calculation.updateAmountValue(this.values);
+    this.calculateAmountValues();
   }
 
   fetchFormData() {
@@ -63,7 +61,8 @@ export class DashboardComponent implements OnInit {
     formValue.date = date;
     this.expenseForm.reset();
     this.isExpenseEditable = false;
-    this.calculation.updateExpenseValue(formValue);
+    this.expenses.unshift(formValue);
+    this.calculateAmountValues();
   }
 
   formatDate(date: any) {
@@ -73,7 +72,29 @@ export class DashboardComponent implements OnInit {
 
   deleteData(index: any) {
     this.expenses.splice(index, 1);
-    this.calculation.updateTotalExpenses(this.expenses);
+    this.calculateAmountValues()
+  }
+
+  calculateAmountValues() {
+    const totalExpense = this.expenses.reduce((a: any, b: any) => { return a + b.amount }, 0);
+    this.expenseAmt = totalExpense;
+    this.balanceAmt = this.incomeAmt - totalExpense;
+    this.updateDataToServer();
+  }
+
+  updateDataToServer() {
+    const payload = {
+      amounts: {
+        income: this.incomeAmt,
+        expense: this.expenseAmt,
+        balance: this.balanceAmt
+      },
+      expenses: JSON.stringify(this.expenses)
+    };
+
+    this.api.sendUserData(payload).subscribe((res: any) => {
+
+    })
   }
 
 }

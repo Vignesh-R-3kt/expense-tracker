@@ -10,10 +10,11 @@
                 <div class="card-title">
                     <h4>Total Income</h4>
                     <button *ngIf="!isIncomeEditable" (click)="enableEditMode()"><mat-icon>edit</mat-icon></button>
-                    <button *ngIf="isIncomeEditable" (click)="saveIncomeData()"><mat-icon>save</mat-icon></button>
+                    <button *ngIf="isIncomeEditable" (click)="saveIncomeData()"><mat-icon
+                            style="color: #006AFF;">save</mat-icon></button>
                 </div>
-                <h3 *ngIf="!isIncomeEditable">{{values.income| currencyFormatter}}</h3>
-                <input type="number" #inputField [(ngModel)]="values.income" placeholder="Enter Income"
+                <h3 *ngIf="!isIncomeEditable">{{incomeAmt | currencyFormatter}}</h3>
+                <input type="number" #inputField [(ngModel)]="incomeAmt" placeholder="Enter Income"
                     *ngIf="isIncomeEditable">
             </li>
 
@@ -24,7 +25,7 @@
                     <button (click)="isExpenseEditable = true"
                         *ngIf="!isExpenseEditable"><mat-icon>add</mat-icon></button>
                 </div>
-                <h3 *ngIf="!isExpenseEditable">{{values.expense| currencyFormatter}}</h3>
+                <h3 *ngIf="!isExpenseEditable">{{expenseAmt | currencyFormatter}}</h3>
                 <form [formGroup]="expenseForm" *ngIf="isExpenseEditable" (submit)="fetchFormData()">
                     <mat-form-field appearance="outline">
                         <mat-label>Select date</mat-label>
@@ -70,7 +71,7 @@
                 <div class="card-title">
                     <h4>Balance</h4>
                 </div>
-                <h3>{{values.balance| currencyFormatter}}</h3>
+                <h3>{{balanceAmt | currencyFormatter}}</h3>
             </li>
         </ul>
     </div>
