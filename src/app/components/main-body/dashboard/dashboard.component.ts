@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { amounts, expense } from 'src/app/shared/interface';
 
 @Component({
@@ -23,7 +24,7 @@ export class DashboardComponent implements OnInit {
 
   expenseForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private api: ApiService) {
+  constructor(private fb: FormBuilder, private api: ApiService, private snackbar: SnackbarService) {
     this.expenseForm = this.fb.group({
       date: ["", [Validators.required]],
       amount: ["", [Validators.required]],
@@ -53,6 +54,7 @@ export class DashboardComponent implements OnInit {
   saveIncomeData() {
     this.isIncomeEditable = false;
     this.calculateAmountValues();
+    this.snackbar.success('Income Saved Successfully');
   }
 
   fetchFormData() {
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnInit {
     this.isExpenseEditable = false;
     this.expenses.unshift(formValue);
     this.calculateAmountValues();
+    this.snackbar.success('New Expense Added Successfully');
   }
 
   formatDate(date: any) {
@@ -72,7 +75,8 @@ export class DashboardComponent implements OnInit {
 
   deleteData(index: any) {
     this.expenses.splice(index, 1);
-    this.calculateAmountValues()
+    this.calculateAmountValues();
+    this.snackbar.success('Expence Record Deleted Successfully');
   }
 
   calculateAmountValues() {

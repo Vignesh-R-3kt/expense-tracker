@@ -9,8 +9,9 @@
             <li class="income-card" [ngClass]="{'disable' : isExpenseEditable}">
                 <div class="card-title">
                     <h4>Total Income</h4>
-                    <button *ngIf="!isIncomeEditable" (click)="enableEditMode()"><mat-icon>edit</mat-icon></button>
-                    <button *ngIf="isIncomeEditable" (click)="saveIncomeData()"><mat-icon
+                    <button *ngIf="!isIncomeEditable" matTooltip="Edit"
+                        (click)="enableEditMode()"><mat-icon>edit</mat-icon></button>
+                    <button *ngIf="isIncomeEditable" matTooltip="Save" (click)="saveIncomeData()"><mat-icon
                             style="color: #006AFF;">save</mat-icon></button>
                 </div>
                 <h3 *ngIf="!isIncomeEditable">{{incomeAmt | currencyFormatter}}</h3>
@@ -22,7 +23,7 @@
             <li class="expense-card" [ngClass]="{'enable' : isExpenseEditable}">
                 <div class="card-title">
                     <h4>{{ isExpenseEditable ? "Add New Expense" : "Total Expenses"}}</h4>
-                    <button (click)="isExpenseEditable = true"
+                    <button (click)="isExpenseEditable = true" matTooltip="Add new"
                         *ngIf="!isExpenseEditable"><mat-icon>add</mat-icon></button>
                     <span class="balance-small-text" *ngIf="isExpenseEditable">Balance : {{ balanceAmt |
                         currencyFormatter}}</span>
@@ -60,9 +61,10 @@
 
                     <div class="btns-wrapper" *ngIf="isExpenseEditable">
                         <button mat-raised-button *ngIf="isExpenseEditable" class="add-btn" type="submit"
-                            [disabled]="!expenseForm.valid"><mat-icon>send</mat-icon> Submit</button>
+                            [disabled]="!expenseForm.valid" matTooltip="submit"><mat-icon>send</mat-icon>
+                            Submit</button>
                         <button mat-raised-button (click)="isExpenseEditable = false" *ngIf="isExpenseEditable"
-                            class="close-btn"><mat-icon>close</mat-icon> Cancel</button>
+                            class="close-btn" matTooltip="Cancel"><mat-icon>close</mat-icon> Cancel</button>
                     </div>
                 </form>
 
@@ -99,7 +101,7 @@
                             <td>{{expense.date}}</td>
                             <td class="category">{{expense.category }}</td>
                             <td class="description">{{expense.description}}</td>
-                            <td><button (click)="deleteData(i)">Delete</button></td>
+                            <td><button matTooltip="Delete" (click)="deleteData(i)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
