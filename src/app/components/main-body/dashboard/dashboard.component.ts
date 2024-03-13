@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { amounts, expense } from 'src/app/shared/interface';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   expenseForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private snackbar: SnackbarService) {
+  constructor(private fb: FormBuilder, private api: ApiService, private snackbar: SnackbarService, private dialog: MatDialog) {
     this.expenseForm = this.fb.group({
       date: ["", [Validators.required]],
       amount: ["", [Validators.required]],
@@ -74,9 +76,17 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteData(index: any) {
-    this.expenses.splice(index, 1);
-    this.calculateAmountValues();
-    this.snackbar.success('Expence Record Deleted Successfully');
+    const deleteDialog = this.dialog.open(DeleteDialogComponent, {
+      disableClose: false
+    });
+
+    deleteDialog.afterClosed().subscribe((res: any) => {
+      if (res) {
+        this.expenses.splice(index, 1);
+        this.calculateAmountValues();
+        this.snackbar.success('Expence Record Deleted Successfully')
+      }
+    })
   }
 
   calculateAmountValues() {

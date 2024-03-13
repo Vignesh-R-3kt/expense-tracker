@@ -13,12 +13,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     StatisticsComponent,
-    CurrencyFormatterPipe
+    CurrencyFormatterPipe,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDatepickerModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 export class MainBodyModule { }
