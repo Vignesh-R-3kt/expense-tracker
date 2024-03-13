@@ -70,4 +70,9 @@ export class DashboardComponent implements OnInit {
     return `${userDate.getDate().toString().padStart(2, '0')}-${(userDate.getMonth() + 1).toString().padStart(2, '0')}-${userDate.getFullYear()} `;
   }
 
+  deleteData(index: any) {
+    this.expenses.splice(index, 1);
+    this.calculation.updateTotalExpenses(this.expenses);
+  }
+
 }

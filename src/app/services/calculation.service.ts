@@ -11,14 +11,14 @@ export class CalculationService {
   private expenses: Subject<expense[]> = new Subject<expense[]>();
 
   private expensesData: expense[] = [];
+  private amountsData: amounts = {
+    income: 0,
+    expense: 0,
+    balance: 0
+  };
 
   setInitialValue() {
-    this.amounts.next({
-      income: 0,
-      expense: 0,
-      balance: 0
-    });
-
+    this.amounts.next(this.amountsData);
     this.expenses.next(this.expensesData);
   }
 
@@ -32,7 +32,8 @@ export class CalculationService {
       expense: data.expense,
       balance: data.income - data.expense
     };
-    this.amounts.next(calculatedData);
+    this.amountsData = calculatedData;
+    this.amounts.next(this.amountsData);
   }
 
   getExpensesDetails() {
@@ -41,6 +42,23 @@ export class CalculationService {
 
   updateExpenseValue(expense: expense) {
     this.expensesData.push(expense);
+    this.updateTotalAmount();
+    this.expenses.next(this.expensesData);
+  }
+
+  updateTotalAmount() {
+    const updatedAmount = { ...this.amountsData };
+    let totalAmount: number = 0;
+    this.expensesData.forEach((ele: any) => {
+      totalAmount += ele.amount;
+    });
+    updatedAmount.expense = totalAmount;
+    this.updateAmountValue(updatedAmount);
+  }
+
+  updateTotalExpenses(data: any) {
+    this.expensesData = data;
+    this.updateTotalAmount();
     this.expenses.next(this.expensesData);
   }
 

@@ -97,7 +97,7 @@
                         <td>{{expense.date}}</td>
                         <td class="category">{{expense.category }}</td>
                         <td>{{expense.description}}</td>
-                        <td><button>Delete</button></td>
+                        <td><button (click)="deleteData(i)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
