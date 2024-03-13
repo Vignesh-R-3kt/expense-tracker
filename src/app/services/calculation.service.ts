@@ -1,6 +1,7 @@
 import { amounts, expense } from './../shared/interface';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,19 @@ export class CalculationService {
     expense: 0,
     balance: 0
   };
+
+  constructor(private api: ApiService) {
+    this.api.fetchUserdata().subscribe((res: any) => {
+      if (res) {
+        if (res.amounts) {
+          this.updateAmountValue(res.amounts);
+        }
+        if (res.expenses) {
+          this.updateExpenseValue(res.expenses);
+        }
+      }
+    })
+  }
 
   setInitialValue() {
     this.amounts.next(this.amountsData);
@@ -34,6 +48,7 @@ export class CalculationService {
     };
     this.amountsData = calculatedData;
     this.amounts.next(this.amountsData);
+    this.updateDataToServer();
   }
 
   getExpensesDetails() {
@@ -44,6 +59,7 @@ export class CalculationService {
     this.expensesData.push(expense);
     this.updateTotalAmount();
     this.expenses.next(this.expensesData);
+    this.updateDataToServer();
   }
 
   updateTotalAmount() {
@@ -54,12 +70,25 @@ export class CalculationService {
     });
     updatedAmount.expense = totalAmount;
     this.updateAmountValue(updatedAmount);
+    this.updateDataToServer();
   }
 
   updateTotalExpenses(data: any) {
     this.expensesData = data;
     this.updateTotalAmount();
     this.expenses.next(this.expensesData);
+    this.updateDataToServer();
+  }
+
+
+  updateDataToServer() {
+    const payload = {
+      amounts: this.amountsData,
+      expenses: this.expensesData
+    }
+
+    this.api.sendUserData(payload).subscribe((res: any) => {
+    })
   }
 
 }

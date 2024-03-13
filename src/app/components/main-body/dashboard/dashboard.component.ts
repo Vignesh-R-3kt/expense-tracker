@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
 import { CalculationService } from 'src/app/services/calculation.service';
 import { amounts, expense } from 'src/app/shared/interface';
 
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   expenseForm: FormGroup;
 
-  constructor(private calculation: CalculationService, private fb: FormBuilder) {
+  constructor(private calculation: CalculationService, private fb: FormBuilder, private api: ApiService) {
     this.expenseForm = this.fb.group({
       date: ["", [Validators.required]],
       amount: ["", [Validators.required]],
