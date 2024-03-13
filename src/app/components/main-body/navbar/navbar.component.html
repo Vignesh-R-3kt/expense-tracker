@@ -11,14 +11,13 @@
             <a routerLink="./statistics"><mat-icon> map</mat-icon> <span>Statistics</span> </a>
         </li>
         <li routerLinkActive="active">
-            <a routerLink="./calculator"><mat-icon> Calculator</mat-icon> <span>Calculator</span> </a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="./profile"><mat-icon> Profile</mat-icon> <span>Profile</span> </a>
+            <a routerLink="./calculator"><mat-icon> </mat-icon> <span>Calculator</span> </a>
         </li>
     </ul>
 
     <div class="logout-wrapper">
+        <img [src]="profileImg" alt="">
+        <h5>{{userName}}</h5>
         <button mat-raised-button (click)="logout()"><mat-icon>power_settings_new</mat-icon> Logout</button>
     </div>
 </div>
