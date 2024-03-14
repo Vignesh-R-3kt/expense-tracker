@@ -172,7 +172,7 @@ export class DashboardComponent implements OnInit {
         align: 'left'
       },
       xAxis: {
-        categories: ['Food', 'Travel', 'shopping', 'Grocery', 'Movie', 'Others'],
+        categories: ['Food', 'Travel', 'Shopping', 'Grocery', 'Movie', 'Others'],
         title: {
           text: 'Category',
         },
