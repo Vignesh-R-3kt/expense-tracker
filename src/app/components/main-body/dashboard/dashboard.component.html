@@ -14,7 +14,14 @@
                     <button *ngIf="isIncomeEditable" matTooltip="Save" (click)="saveIncomeData()"><mat-icon
                             style="color: #006AFF;">save</mat-icon></button>
                 </div>
-                <h3 *ngIf="!isIncomeEditable">{{incomeAmt | currencyFormatter}}</h3>
+                <h3 *ngIf="!isIncomeEditable"><span *ngIf="!isIncomeVisible">₹ xx,xxx</span> <span
+                        *ngIf="isIncomeVisible">{{incomeAmt |
+                        currencyFormatter}}</span>
+                    <mat-icon *ngIf="!isIncomeVisible" matTooltip="show"
+                        (click)="isIncomeVisible = true">visibility</mat-icon>
+                    <mat-icon *ngIf="isIncomeVisible" matTooltip="hide"
+                        (click)="isIncomeVisible = false">visibility_off</mat-icon>
+                </h3>
                 <input type="number" #inputField [(ngModel)]="incomeAmt" placeholder="Enter Income"
                     *ngIf="isIncomeEditable">
             </li>
@@ -76,7 +83,15 @@
                 <div class="card-title">
                     <h4>Balance</h4>
                 </div>
-                <h3>{{balanceAmt | currencyFormatter}}</h3>
+                <h3>
+                    <span *ngIf="!isBalanceVisible">₹ xx,xxx</span>
+                    <span *ngIf="isBalanceVisible">{{balanceAmt | currencyFormatter}}</span>
+
+                    <mat-icon *ngIf="!isBalanceVisible" matTooltip="show"
+                        (click)="isBalanceVisible = true">visibility</mat-icon>
+                    <mat-icon *ngIf="isBalanceVisible" matTooltip="hide"
+                        (click)="isBalanceVisible = false">visibility_off</mat-icon>
+                </h3>
             </li>
         </ul>
     </div>

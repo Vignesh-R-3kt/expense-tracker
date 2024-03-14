@@ -144,6 +144,17 @@
           margin-top: auto;
           line-height: 60px;
           color: #191919;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+
+          mat-icon {
+            margin-top: 4px;
+            font-size: 18px;
+            color: #656575;
+            cursor: pointer;
+          }
         }
 
         .btns-wrapper {

@@ -14,14 +14,14 @@ import * as Highcharts from 'highcharts';
 })
 export class DashboardComponent implements OnInit {
 
-
-
   todayDate: Date = new Date();
   isIncomeEditable: boolean = false;
   isExpenseEditable: boolean = false;
   incomeAmt: number = 0;
   expenseAmt: number = 0;
   balanceAmt: number = 0;
+  isIncomeVisible: boolean = false;
+  isBalanceVisible: boolean = false;
 
   @ViewChild('inputField', { static: false }) inputField: ElementRef;
 
