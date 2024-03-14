@@ -152,7 +152,7 @@ export class DashboardComponent implements OnInit {
     const graphData = [{
       type: 'column',
       name: 'Total Expense: ',
-      data: [this.getCategoryTotalValue('food'), this.getCategoryTotalValue('travel'), this.getCategoryTotalValue('bike'), this.getCategoryTotalValue('grocery'), this.getCategoryTotalValue('movie'), this.getCategoryTotalValue('others'),]
+      data: [this.getCategoryTotalValue('food'), this.getCategoryTotalValue('travel'), this.getCategoryTotalValue('shopping'), this.getCategoryTotalValue('grocery'), this.getCategoryTotalValue('movie'), this.getCategoryTotalValue('others'),]
     }]
     this.reinitializeChart(graphData);
   }
@@ -170,7 +170,7 @@ export class DashboardComponent implements OnInit {
         align: 'left'
       },
       xAxis: {
-        categories: ['Food', 'Travel', 'Bike', 'Grocery', 'Movie', 'Others'],
+        categories: ['Food', 'Travel', 'shopping', 'Grocery', 'Movie', 'Others'],
         title: {
           text: 'Category',
         },
