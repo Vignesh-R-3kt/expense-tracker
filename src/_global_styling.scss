@@ -79,3 +79,12 @@ input[type="number"] {
   padding-bottom: 6px;
   font-size: 16px !important;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+
+  &-thumb {
+    background: #cccccc;
+    border-radius: 12px;
+  }
+}
