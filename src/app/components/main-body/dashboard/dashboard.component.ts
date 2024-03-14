@@ -1,17 +1,21 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { amounts, expense } from 'src/app/shared/interface';
+import { expense } from 'src/app/shared/interface';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
+
+
+
   todayDate: Date = new Date();
   isIncomeEditable: boolean = false;
   isExpenseEditable: boolean = false;
@@ -44,6 +48,10 @@ export class DashboardComponent implements OnInit {
         this.expenses = JSON.parse(res.expenses);
       }
     })
+  }
+
+  ngAfterViewInit(): void {
+    Highcharts.chart('container', this.options);
   }
 
   enableEditMode() {
@@ -111,5 +119,56 @@ export class DashboardComponent implements OnInit {
 
     })
   }
+
+  options: Highcharts.Options = {
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: 'Hello world',
+      align: 'center'
+    },
+    subtitle: {
+      align: 'left'
+    },
+    xAxis: {
+      categories: ['Jan', 'Feb', 'March', 'April', 'May', 'June'],
+      crosshair: true,
+      accessibility: {
+        description: 'Months'
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'Total Balance'
+      }
+    },
+    tooltip: {
+      valueSuffix: ' (1000 MT)',
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [
+      {
+        type: 'column',
+        name: 'Income',
+        data: [406292, 260000, 107000, 68300, 27500, 14500]
+      },
+      {
+        type: 'column',
+        name: 'Expense',
+        data: [51086, 136000, 5500, 141000, 107180, 77000]
+      }
+    ],
+
+    accessibility: {
+      enabled: false
+    }
+  };
 
 }
