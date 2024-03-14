@@ -85,10 +85,15 @@ input[type="number"] {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 
   &-thumb {
-    background: #cccccc;
+    background: #006aff;
     border-radius: 12px;
   }
+}
+
+.highcharts-credits,
+.dataTables_processing {
+  display: none !important;
 }
