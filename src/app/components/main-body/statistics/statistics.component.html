@@ -1,35 +1,72 @@
 <div class="statistics-container">
     <div class="dropdown-section">
-        <form>
-            <mat-form-field appearance="outline">
-                <mat-label>Year</mat-label>
-                <mat-select [value]="currentYear">
-                    <mat-option [value]="year" *ngFor="let year of yearsData">{{year}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Month</mat-label>
-                <mat-select [value]="currentMonth">
-                    <mat-option value="1">January</mat-option>
-                    <mat-option value="2">February</mat-option>
-                    <mat-option value="3">March</mat-option>
-                    <mat-option value="4">April</mat-option>
-                    <mat-option value="5">May</mat-option>
-                    <mat-option value="6">June</mat-option>
-                    <mat-option value="7">July</mat-option>
-                    <mat-option value="8">August</mat-option>
-                    <mat-option value="9">September</mat-option>
-                    <mat-option value="10">October</mat-option>
-                    <mat-option value="11">November</mat-option>
-                    <mat-option value="12">December</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <button mat-raised-button color="primary">Get Report</button>
-        </form>
+        <div class="left-section">
+            <h3>Customize Your Date Range</h3>
+            <form>
+                <div class="inputs-wrapper">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Year</mat-label>
+                        <mat-select [value]="currentYear">
+                            <mat-option [value]="year" *ngFor="let year of yearsData">{{year}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Month</mat-label>
+                        <mat-select [value]="currentMonth">
+                            <mat-option value="1">January</mat-option>
+                            <mat-option value="2">February</mat-option>
+                            <mat-option value="3">March</mat-option>
+                            <mat-option value="4">April</mat-option>
+                            <mat-option value="5">May</mat-option>
+                            <mat-option value="6">June</mat-option>
+                            <mat-option value="7">July</mat-option>
+                            <mat-option value="8">August</mat-option>
+                            <mat-option value="9">September</mat-option>
+                            <mat-option value="10">October</mat-option>
+                            <mat-option value="11">November</mat-option>
+                            <mat-option value="12">December</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <button mat-raised-button color="primary">Get Report</button>
+            </form>
+            <div class="amounts-section" *ngIf="amount">
+                <p>Income : <span>{{amount.income | currencyFormatter}}</span></p>
+                <p>Expenses : <span>{{amount.expense| currencyFormatter}}</span></p>
+                <p>Savings : <span>{{amount.balance | currencyFormatter}}</span></p>
+            </div>
+        </div>
+        <div class="right-section">
+            <div id="stats-container" class="dashboard-chart"></div>
+        </div>
     </div>
-    <div class="amounts-section" *ngIf="amount">
-        <p>Income : <span>{{amount.income | currencyFormatter}}</span></p>
-        <p>Expenses : <span>{{amount.expense| currencyFormatter}}</span></p>
-        <p>Savings : <span>{{amount.balance | currencyFormatter}}</span></p>
+
+    <div class="table-chart-wrapper">
+        <h3>Expenses Details :</h3>
+        <div class="table-wrapper">
+            <div class="table">
+                <table id="stats-table" datatable [dtOptions]="dt0ptions">
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let expense of expenses; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{expense.amount | currencyFormatter}}</td>
+                            <td>{{expense.date}}</td>
+                            <td class="category">{{expense.category }}</td>
+                            <td class="description">{{expense.description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
