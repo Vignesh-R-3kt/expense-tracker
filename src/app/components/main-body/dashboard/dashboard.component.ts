@@ -97,6 +97,7 @@ export class DashboardComponent implements OnInit {
     this.calculateAmountValues();
     this.snackbar.success('New Expense Added Successfully');
     this.updateCategoryData();
+    this.reInitializeTable();
   }
 
   formatDate(date: any) {
@@ -116,6 +117,7 @@ export class DashboardComponent implements OnInit {
         this.calculateAmountValues();
         this.snackbar.success('Expence Record Deleted Successfully');
         this.updateCategoryData();
+        this.reInitializeTable();
       }
     })
   }
