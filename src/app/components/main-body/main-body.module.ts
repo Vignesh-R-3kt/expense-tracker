@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatSelectModule,
     MatTooltipModule,
     MatDialogModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    DataTablesModule
   ]
 })
 export class MainBodyModule { }

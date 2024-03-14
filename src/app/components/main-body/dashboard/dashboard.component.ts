@@ -27,6 +27,10 @@ export class DashboardComponent implements OnInit {
 
   highchartOptions: Highcharts.Options;
 
+  dt0ptions: DataTables.Settings = {
+    pagingType: 'full_numbers',
+  };
+
 
   expenses: expense[] = [];
 
@@ -49,8 +53,25 @@ export class DashboardComponent implements OnInit {
         this.balanceAmt = res.amounts.balance;
         this.expenses = JSON.parse(res.expenses);
         this.updateCategoryData();
+        this.reInitializeTable();
       }
-    })
+    });
+
+    this.dt0ptions = {
+      pagingType: 'full_numbers',
+      destroy: true
+    };
+  }
+
+  reInitializeTable() {
+    $('#expense-table').DataTable().destroy();
+    setTimeout(() => {
+      $('#expense-table').DataTable({
+        pagingType: 'full_numbers',
+        processing: true,
+        destroy: true
+      })
+    }, 1);
   }
 
   enableEditMode() {

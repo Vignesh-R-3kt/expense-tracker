@@ -237,6 +237,10 @@
                 border-radius: 4px;
                 font-size: 10px;
               }
+
+              &:not(.description) {
+                white-space: nowrap;
+              }
             }
           }
 
