@@ -1,0 +1,47 @@
+.statistics-container {
+  padding: 24px;
+
+  .dropdown-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+
+      ::ng-deep {
+        .mat-mdc-form-field-subscript-wrapper {
+          display: none !important;
+        }
+      }
+    }
+  }
+  .amounts-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+
+    p {
+      font-size: 12px;
+      line-height: 1;
+      color: #656565;
+      font-weight: 400;
+      padding: 4px 6px;
+
+      span {
+        font-weight: 600;
+        background: #3f51b5;
+        color: #ffffff;
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 32px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}

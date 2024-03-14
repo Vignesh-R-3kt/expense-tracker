@@ -58,6 +58,10 @@ input[type="number"] {
   animation: slideIn 0.4s ease forwards;
 }
 
+.statistics-container {
+  animation: slideIn 0.4s ease forwards;
+}
+
 @keyframes slideIn {
   0% {
     transform: translateX(10px);
