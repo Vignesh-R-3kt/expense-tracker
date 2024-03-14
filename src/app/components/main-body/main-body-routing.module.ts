@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'statistics', component: StatisticsComponent },
+      { path: 'calculator', component: CalculatorComponent },
       { path: "**", component: NotFoundComponent }
     ]
   }

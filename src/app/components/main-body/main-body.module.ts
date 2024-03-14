@@ -15,13 +15,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     StatisticsComponent,
     CurrencyFormatterPipe,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    CalculatorComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,8 @@ import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.c
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    HighchartsChartModule
   ]
 })
 export class MainBodyModule { }
