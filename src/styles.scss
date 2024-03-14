@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./global_styling";
+
+.table {
+  padding-right: 8px;
+  .dataTables_wrapper {
+    .dataTables_length {
+      margin-bottom: 2px;
+      label {
+        font-size: 12px;
+      }
+      select {
+        font-size: 12px;
+      }
+    }
+    .dataTables_filter {
+      font-size: 12px;
+      input {
+        padding: 4px;
+        width: 60%;
+        font-size: 12px;
+      }
+    }
+    .dataTables_info {
+      font-size: 12px;
+    }
+    .dataTables_paginate {
+      font-size: 12px;
+      a {
+        padding: 8px 6px;
+        margin: 0;
+      }
+      span {
+        .paginate_button {
+          padding: 4px 8px;
+        }
+      }
+    }
+  }
+}
