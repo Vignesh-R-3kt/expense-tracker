@@ -12,7 +12,7 @@ import * as Highcharts from 'highcharts';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
 
 
 
@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   balanceAmt: number = 0;
 
   @ViewChild('inputField', { static: false }) inputField: ElementRef;
+
+  highchartOptions: Highcharts.Options;
 
 
   expenses: expense[] = [];
@@ -46,12 +48,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.expenseAmt = res.amounts.expense;
         this.balanceAmt = res.amounts.balance;
         this.expenses = JSON.parse(res.expenses);
+        this.updateCategoryData();
       }
     })
-  }
-
-  ngAfterViewInit(): void {
-    Highcharts.chart('container', this.options);
   }
 
   enableEditMode() {
@@ -76,6 +75,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.expenses.unshift(formValue);
     this.calculateAmountValues();
     this.snackbar.success('New Expense Added Successfully');
+    this.updateCategoryData();
   }
 
   formatDate(date: any) {
@@ -93,7 +93,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (res) {
         this.expenses.splice(index, 1);
         this.calculateAmountValues();
-        this.snackbar.success('Expence Record Deleted Successfully')
+        this.snackbar.success('Expence Record Deleted Successfully');
+        this.updateCategoryData();
       }
     })
   }
@@ -120,55 +121,86 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     })
   }
 
-  options: Highcharts.Options = {
-    chart: {
-      type: 'column'
-    },
-    title: {
-      text: 'Hello world',
-      align: 'center'
-    },
-    subtitle: {
-      align: 'left'
-    },
-    xAxis: {
-      categories: ['Jan', 'Feb', 'March', 'April', 'May', 'June'],
-      crosshair: true,
-      accessibility: {
-        description: 'Months'
-      }
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Total Balance'
-      }
-    },
-    tooltip: {
-      valueSuffix: ' (1000 MT)',
-    },
-    plotOptions: {
-      column: {
-        pointPadding: 0.2,
-        borderWidth: 0
-      }
-    },
-    series: [
-      {
-        type: 'column',
-        name: 'Income',
-        data: [406292, 260000, 107000, 68300, 27500, 14500]
-      },
-      {
-        type: 'column',
-        name: 'Expense',
-        data: [51086, 136000, 5500, 141000, 107180, 77000]
-      }
-    ],
+  getCategoryTotalValue(category: string) {
+    const filterItem = this.expenses.filter(ele => ele.category === category);
+    const totalAmount = filterItem.reduce((a: any, b: any) => { return a + b.amount }, 0);
+    return totalAmount || 0;
+  }
 
-    accessibility: {
-      enabled: false
-    }
-  };
+  updateCategoryData() {
+    const graphData = [{
+      type: 'column',
+      name: 'Total Expense: ',
+      data: [this.getCategoryTotalValue('food'), this.getCategoryTotalValue('travel'), this.getCategoryTotalValue('bike'), this.getCategoryTotalValue('grocery'), this.getCategoryTotalValue('movie'), this.getCategoryTotalValue('others'),]
+    }]
+    this.reinitializeChart(graphData);
+  }
+
+  reinitializeChart(data: any) {
+    this.highchartOptions = {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Expense Chart',
+        align: 'center'
+      },
+      subtitle: {
+        align: 'left'
+      },
+      xAxis: {
+        categories: ['Food', 'Travel', 'Bike', 'Grocery', 'Movie', 'Others'],
+        title: {
+          text: 'Category',
+        },
+        labels: {
+          enabled: true
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Amount'
+        },
+        crosshair: false
+      },
+      tooltip: {
+        valuePrefix: '₹ ',
+        valueSuffix: '',
+        headerFormat: ''
+      },
+      plotOptions: {
+        column: {
+          colorByPoint: true,
+          pointPadding: 0.2,
+          borderWidth: 0,
+          dataLabels: {
+            enabled: true,
+            formatter: function () {
+              const value = this.y || 0;
+              const formatted = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              return `₹ ${formatted}`;
+            }
+          }
+        }
+      },
+      colors: [
+        '#334D6C',
+        '#DE686C',
+        '#6A5676',
+        '#E3A787',
+        '#AF6272',
+        '#7F934B'
+      ],
+      series: data,
+      legend: {
+        enabled: false
+      },
+      accessibility: {
+        enabled: false
+      },
+    };
+    Highcharts.chart('container', this.highchartOptions);
+  }
 
 }

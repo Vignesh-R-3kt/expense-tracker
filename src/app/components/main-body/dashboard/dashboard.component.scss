@@ -4,8 +4,8 @@
 
   .cards-container {
     background: #f8f7f1;
-    width: 35%;
-    padding: 38px 24px;
+    width: 30%;
+    padding: 38px 12px;
     display: flex;
     flex-direction: column;
 
@@ -76,6 +76,7 @@
             border-radius: 4px;
             padding: 4px;
             font-weight: 700;
+            width: 100%;
 
             &::placeholder {
               font-weight: 400;
@@ -162,16 +163,20 @@
 
   .expense-details-container {
     flex-grow: 1;
-    padding: 24px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    width: 70%;
 
     .table-wrapper {
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      padding: 24px 12px;
-      margin-bottom: 18px;
+      padding: 12px;
+      margin-bottom: 8px;
       border-radius: 4px;
-      height: 60%;
+      height: 50%;
+      overflow: hidden;
+      border: 1px solid #cccccc;
 
       h4 {
         text-align: center;
@@ -180,11 +185,17 @@
         letter-spacing: 1px;
         border-bottom: 1px solid #e4e4e4;
         padding-bottom: 6px;
+
+        span {
+          font-size: 10px;
+          margin-left: 24px;
+        }
       }
 
       .table {
         max-height: 100%;
         overflow-y: auto;
+        padding-bottom: 28px;
 
         table {
           width: 100%;
@@ -242,14 +253,17 @@
       }
     }
 
-    .graphWrapper {
+    .graph-wrapper {
       width: 100%;
       margin: 0 auto;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      margin-bottom: 24px;
+      height: 50%;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #cccccc;
 
-      .container {
-        height: 30px;
+      #container {
+        height: 100%;
       }
     }
   }

@@ -55,6 +55,7 @@
                             <mat-option value="travel">Travel</mat-option>
                             <mat-option value="bike">Bike</mat-option>
                             <mat-option value="grocery">Grocery</mat-option>
+                            <mat-option value="movie">Movie</mat-option>
                             <mat-option value="others">Others</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -81,7 +82,7 @@
     </div>
     <div class="expense-details-container">
         <div class="table-wrapper">
-            <h4>Expenses Details</h4>
+            <h4>Expenses Details <span>[ Total Expenses : {{expenseAmt | currencyFormatter}} ]</span></h4>
             <div class="table">
                 <table>
                     <thead>
@@ -108,8 +109,8 @@
             </div>
         </div>
 
-        <div class="graphWrapper">
-            <div id="container"></div>
+        <div class="graph-wrapper">
+            <div id="container" class="dashboard-chart"></div>
         </div>
 
     </div>
