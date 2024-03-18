@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import * as Highcharts from 'highcharts';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoaderService } from 'src/app/services/loader.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class StatisticsComponent implements OnInit {
   dateRangeForm: FormGroup;
   monthData: any;
 
-  constructor(private api: ApiService, private fb: FormBuilder) {
+  constructor(private api: ApiService, private fb: FormBuilder, private loader: LoaderService) {
     this.dateRangeForm = fb.group({
       year: [''],
       month: ['']
@@ -31,6 +32,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loader.show();
     this.updateDates();
     this.api.fetchUserdata(this.dateRangeForm.get('month')?.value, this.dateRangeForm.get('year')?.value).subscribe((res: any) => {
       this.monthData = res;
@@ -39,6 +41,9 @@ export class StatisticsComponent implements OnInit {
         this.reInitializeTable();
         this.reinitializeChart();
       }
+      setTimeout(() => {
+        this.loader.hide();
+      }, 1000)
     })
     this.dt0ptions = {
       pagingType: 'full_numbers',
@@ -61,6 +66,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   updateChartData() {
+    this.loader.show();
     const formValue = this.dateRangeForm.value;
     this.api.fetchUserdata(formValue.month, formValue.year).subscribe((res: any) => {
       this.monthData = res;
@@ -69,6 +75,9 @@ export class StatisticsComponent implements OnInit {
         this.reInitializeTable();
         this.reinitializeChart();
       }
+      setTimeout(() => {
+        this.loader.hide();
+      }, 1000)
     })
   }
 

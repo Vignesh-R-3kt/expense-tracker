@@ -6,6 +6,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { expense } from 'src/app/shared/interface';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import * as Highcharts from 'highcharts';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,12 +34,11 @@ export class DashboardComponent implements OnInit {
     pagingType: 'full_numbers',
   };
 
-
   expenses: expense[] = [];
 
   expenseForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private snackbar: SnackbarService, private dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private api: ApiService, private snackbar: SnackbarService, private dialog: MatDialog, private loader: LoaderService) {
     this.expenseForm = this.fb.group({
       date: ["", [Validators.required]],
       amount: ["", [Validators.required]],
@@ -48,6 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loader.show();
     this.api.fetchUserdata(this.currentMonth, this.currentYear).subscribe((res: any) => {
       if (res) {
         this.incomeAmt = res.amounts.income;
@@ -57,6 +58,10 @@ export class DashboardComponent implements OnInit {
         this.updateCategoryData();
         this.reInitializeTable();
       }
+
+      setTimeout(() => {
+        this.loader.hide()
+      }, 1000);
     });
 
     this.dt0ptions = {
