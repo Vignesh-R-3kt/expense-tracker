@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
   balanceAmt: number = 0;
   isIncomeVisible: boolean = false;
   isBalanceVisible: boolean = false;
+  currentMonth: any = new Date().getMonth() + 1;
+  currentYear: any = new Date().getFullYear();
 
   @ViewChild('inputField', { static: false }) inputField: ElementRef;
 
@@ -46,7 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.fetchUserdata().subscribe((res: any) => {
+    this.api.fetchUserdata(this.currentMonth, this.currentYear).subscribe((res: any) => {
       if (res) {
         this.incomeAmt = res.amounts.income;
         this.expenseAmt = res.amounts.expense;
@@ -139,7 +141,7 @@ export class DashboardComponent implements OnInit {
       expenses: JSON.stringify(this.expenses)
     };
 
-    this.api.sendUserData(payload).subscribe((res: any) => {
+    this.api.sendUserData(this.currentMonth, this.currentYear, payload).subscribe((res: any) => {
 
     })
   }

@@ -2,6 +2,7 @@ import { amounts, expense } from './../../../shared/interface';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import * as Highcharts from 'highcharts';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -16,19 +17,24 @@ export class StatisticsComponent implements OnInit {
   };
 
   highchartOptions: Highcharts.Options;
-
-  currentYear: any;
-  currentMonth: any;
   yearsData: any[] = [];
   amount: amounts;
   expenses: any;
+  dateRangeForm: FormGroup;
+  monthData: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private fb: FormBuilder) {
+    this.dateRangeForm = fb.group({
+      year: [''],
+      month: ['']
+    })
+  }
 
   ngOnInit(): void {
     this.updateDates();
-    this.api.fetchUserdata().subscribe((res: any) => {
-      if (res) {
+    this.api.fetchUserdata(this.dateRangeForm.get('month')?.value, this.dateRangeForm.get('year')?.value).subscribe((res: any) => {
+      this.monthData = res;
+      if (this.monthData) {
         this.updateUserData(res);
         this.reInitializeTable();
         this.reinitializeChart();
@@ -42,22 +48,28 @@ export class StatisticsComponent implements OnInit {
   updateUserData(data: any) {
     this.amount = data.amounts;
     this.expenses = JSON.parse(data.expenses);
-    console.log(this.amount, this.expenses);
-
   }
 
   updateDates() {
     const date = new Date();
-    this.currentYear = date.getFullYear();
-    this.currentMonth = (date.getMonth() + 1).toString();
+    this.dateRangeForm.get('year')?.setValue(date.getFullYear());
+    this.dateRangeForm.get('month')?.setValue((date.getMonth() + 1).toString());
 
-    for (let i = 2024; i <= this.currentYear; i++) {
+    for (let i = 2024; i <= Number(this.dateRangeForm.get('year')?.value); i++) {
       this.yearsData.push(i);
     }
   }
 
   updateChartData() {
-
+    const formValue = this.dateRangeForm.value;
+    this.api.fetchUserdata(formValue.month, formValue.year).subscribe((res: any) => {
+      this.monthData = res;
+      if (this.monthData) {
+        this.updateUserData(res);
+        this.reInitializeTable();
+        this.reinitializeChart();
+      }
+    })
   }
 
   reInitializeTable() {
@@ -114,7 +126,6 @@ export class StatisticsComponent implements OnInit {
           allowPointSelect: true,
           dataLabels: {
             enabled: true,
-            // format: '<b>{point.name}</b>: {point.y}',
             formatter: function () {
               const value = this.y || 0;
               const formatted = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")

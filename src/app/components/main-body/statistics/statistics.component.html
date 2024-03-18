@@ -1,18 +1,19 @@
 <div class="statistics-container">
+    <h2 class="title">Statistics</h2>
     <div class="dropdown-section">
         <div class="left-section">
             <h3>Customize Your Date Range</h3>
-            <form>
+            <form [formGroup]="dateRangeForm" (submit)="updateChartData()">
                 <div class="inputs-wrapper">
                     <mat-form-field appearance="outline">
                         <mat-label>Year</mat-label>
-                        <mat-select [value]="currentYear">
+                        <mat-select formControlName="year">
                             <mat-option [value]="year" *ngFor="let year of yearsData">{{year}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Month</mat-label>
-                        <mat-select [value]="currentMonth">
+                        <mat-select formControlName="month">
                             <mat-option value="1">January</mat-option>
                             <mat-option value="2">February</mat-option>
                             <mat-option value="3">March</mat-option>
@@ -31,18 +32,18 @@
 
                 <button mat-raised-button color="primary">Get Report</button>
             </form>
-            <div class="amounts-section" *ngIf="amount">
+            <div class="amounts-section" *ngIf="monthData">
                 <p>Income : <span>{{amount.income | currencyFormatter}}</span></p>
                 <p>Expenses : <span>{{amount.expense| currencyFormatter}}</span></p>
                 <p>Savings : <span>{{amount.balance | currencyFormatter}}</span></p>
             </div>
         </div>
         <div class="right-section">
-            <div id="stats-container" class="dashboard-chart"></div>
+            <p class="no-data-content" [ngClass]="{'hidden' : monthData}">No data Available for selected month</p>
+            <div id="stats-container" class="dashboard-chart" [ngClass]="{'hidden' : !monthData}"></div>
         </div>
     </div>
-
-    <div class="table-chart-wrapper">
+    <div class="table-chart-wrapper" *ngIf="monthData">
         <h3>Expenses Details :</h3>
         <div class="table-wrapper">
             <div class="table">
