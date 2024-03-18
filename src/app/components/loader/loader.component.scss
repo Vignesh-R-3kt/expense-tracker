@@ -1,0 +1,22 @@
+.loader-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: #ffffff30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+
+  .text-wrapper {
+    p {
+      font-size: 22px;
+      font-weight: 300;
+      color: #1f1f1f;
+      letter-spacing: 4px;
+    }
+  }
+}

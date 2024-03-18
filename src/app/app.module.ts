@@ -19,6 +19,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { DataTablesModule } from 'angular-datatables';
     MainBodyComponent,
     NotFoundComponent,
     NavbarComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
