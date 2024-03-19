@@ -34,7 +34,7 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
     this.loader.show();
     this.updateDates();
-    this.api.fetchUserdata(this.dateRangeForm.get('month')?.value, this.dateRangeForm.get('year')?.value).subscribe((res: any) => {
+    this.api.fetchUserdata(this.dateRangeForm.value.month, this.dateRangeForm.value.year).subscribe((res: any) => {
       this.monthData = res;
       if (this.monthData) {
         this.updateUserData(res);
@@ -68,11 +68,10 @@ export class StatisticsComponent implements OnInit {
   updateChartData() {
     this.loader.show();
     const formValue = this.dateRangeForm.value;
-    console.log(formValue);
 
     this.api.fetchUserdata(formValue.month, formValue.year).subscribe((res: any) => {
       this.monthData = res;
-      if (this.monthData) {
+      if (res) {
         this.updateUserData(res);
         this.reInitializeTable();
         this.reinitializeChart();
