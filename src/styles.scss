@@ -41,4 +41,10 @@
   .dataTables_empty {
     font-size: 12px;
   }
+
+  thead {
+    th {
+      white-space: nowrap;
+    }
+  }
 }
