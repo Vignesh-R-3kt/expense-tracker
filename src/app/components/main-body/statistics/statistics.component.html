@@ -31,7 +31,7 @@
                     </mat-form-field>
                 </div>
             </form>
-            <div class="amounts-section" *ngIf="monthData">
+            <div class="amounts-section" *ngIf="amount">
                 <p>Income : <span>{{amount.income | currencyFormatter}}</span></p>
                 <p>Expenses : <span>{{amount.expense| currencyFormatter}}</span></p>
                 <p>Savings : <span>{{amount.balance | currencyFormatter}}</span></p>

@@ -36,7 +36,7 @@ export class StatisticsComponent implements OnInit {
     this.updateDates();
     this.api.fetchUserdata(this.dateRangeForm.value.month, this.dateRangeForm.value.year).subscribe((res: any) => {
       this.monthData = res;
-      if (this.monthData) {
+      if (res && res.amounts) {
         this.updateUserData(res);
         this.reInitializeTable();
         this.reinitializeChart();
@@ -71,7 +71,7 @@ export class StatisticsComponent implements OnInit {
 
     this.api.fetchUserdata(formValue.month, formValue.year).subscribe((res: any) => {
       this.monthData = res;
-      if (res) {
+      if (res && res.amounts) {
         this.updateUserData(res);
         this.reInitializeTable();
         this.reinitializeChart();
