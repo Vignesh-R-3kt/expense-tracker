@@ -1,16 +1,17 @@
 import { GoogleAuthService } from './../../../services/google-auth.service';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
   userName: any;
   profileImg: any;
+  isHamberger: boolean = false;
 
-  constructor(private googleAuth: GoogleAuthService) { }
+  constructor(private googleAuth: GoogleAuthService, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     const userInfo = JSON.parse(sessionStorage.getItem('userInfo') || '');
@@ -20,5 +21,15 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.googleAuth.logout();
+  }
+
+  openMenu() {
+    this.isHamberger = !this.isHamberger;
+    this.isHamberger = true;
+  }
+
+  closeMenu() {
+    this.isHamberger = false
+    this.isHamberger = this.isHamberger;
   }
 }

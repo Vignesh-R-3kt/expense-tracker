@@ -12,3 +12,18 @@
     flex-grow: 1;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .main-body-container {
+    display: block;
+    width: 100%;
+    overflow: scroll;
+    .navbar-wrapper {
+      position: fixed;
+      z-index: 99;
+      .main-content-wrapper {
+        flex-shrink: 1;
+      }
+    }
+  }
+}

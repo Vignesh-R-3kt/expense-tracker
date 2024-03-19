@@ -28,8 +28,12 @@ export class CalculatorComponent {
     }
   }
 
-  clearResult(): void {
+  clearResult() {
     this.result = '';
+  }
+
+  clearOneDigit() {
+    this.result = this.result.slice(0, -1);
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -41,8 +45,10 @@ export class CalculatorComponent {
       this.addToCalculation(key);
     } else if (key === 'Enter') {
       this.calculateResult();
-    } else if (key === 'c' || key === 'C') {
+    } else if (key === 'C' || key === 'c') {
       this.clearResult();
+    } else if (key === 'Backspace') {
+      this.clearOneDigit();
     }
   }
 }

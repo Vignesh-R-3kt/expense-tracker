@@ -41,7 +41,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatFormFieldModule,
     MatDatepickerModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
