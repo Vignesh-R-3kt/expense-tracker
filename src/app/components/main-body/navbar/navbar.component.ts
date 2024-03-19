@@ -1,5 +1,5 @@
 import { GoogleAuthService } from './../../../services/google-auth.service';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +9,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   userName: any;
   profileImg: any;
-  isHamberger: boolean = false;
+  @Output() closeMenu: EventEmitter<boolean> = new EventEmitter<boolean>;
 
   constructor(private googleAuth: GoogleAuthService, private elementRef: ElementRef) { }
 
@@ -19,17 +19,11 @@ export class NavbarComponent implements OnInit {
     this.profileImg = userInfo.additionalUserInfo.profile.picture;
   }
 
+  handleMenu() {
+    this.closeMenu.emit(false);
+  }
+
   logout() {
     this.googleAuth.logout();
-  }
-
-  openMenu() {
-    this.isHamberger = !this.isHamberger;
-    this.isHamberger = true;
-  }
-
-  closeMenu() {
-    this.isHamberger = false
-    this.isHamberger = this.isHamberger;
   }
 }

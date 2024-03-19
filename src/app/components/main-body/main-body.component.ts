@@ -5,5 +5,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-body.component.scss'],
 })
 export class MainBodyComponent {
+  isNavbarOpen: boolean = false;
 
+  closeMenu(e: any) {
+    this.isNavbarOpen = e
+  }
 }
