@@ -1,6 +1,10 @@
-<div class="navbar-container">
+<!-- Hamburger Icon for Mobile -->
+<mat-icon *ngIf="isHamberger" class="openBtn" (click)="closeMenu()">list</mat-icon>
+<mat-icon *ngIf="!isHamberger" class="closeBtn" (click)="openMenu()">close</mat-icon>
+
+<div class="navbar-container" *ngIf="!isHamberger">
+
     <div class="logo-wrapper">
-        <!-- <h1><mat-icon>euro_symbol</mat-icon> Lorem</h1> -->
         <img src="../../../../assets/images/3.png" alt="logo">
     </div>
 
@@ -17,7 +21,7 @@
     </ul>
 
     <div class="logout-wrapper">
-        <img [src]="profileImg" alt="">
+        <img [src]="profileImg" alt="profileImg">
         <h5>{{userName}}</h5>
         <button mat-raised-button (click)="logout()"><mat-icon>power_settings_new</mat-icon> Logout</button>
     </div>

@@ -205,3 +205,75 @@
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .statistics-container {
+    padding: 12px 8px;
+    h2 {
+      margin-bottom: 0 !important;
+      font-size: 18px;
+    }
+    .dropdown-section {
+      display: flex;
+      flex-direction: column;
+      .left-section {
+        width: 100%;
+        margin-top: 24px;
+        gap: 12px;
+        h3 {
+          font-size: 12px;
+          margin: 0;
+        }
+        form {
+          font-size: 12px;
+          .inputs-wrapper {
+            display: flex;
+            flex-direction: column;
+            button {
+              font-size: 12px;
+            }
+          }
+        }
+
+        .amounts-section {
+          margin: 2px;
+          P {
+            font-size: 12px;
+            span {
+              padding: 6px;
+            }
+          }
+        }
+      }
+
+      .right-section {
+        width: 100%;
+        #stats-container {
+          .highcharts-title {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .table-chart-wrapper {
+      margin-bottom: 24px;
+      h3 {
+        font-size: 12px;
+
+        tr {
+          th {
+            font-size: 10px !important;
+          }
+
+          td {
+            font-size: 10px;
+
+            button {
+              font-size: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

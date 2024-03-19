@@ -106,3 +106,36 @@
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .navbar-container {
+    flex-direction: column;
+    z-index: 99;
+    height: 100vh;
+  }
+
+  .openBtn {
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: -143px;
+    z-index: 9999;
+  }
+
+  .closeBtn {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: -143px;
+    z-index: 9999;
+    color: #000000;
+  }
+
+  .logout-wrapper {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
