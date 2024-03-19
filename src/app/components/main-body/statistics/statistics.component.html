@@ -1,19 +1,20 @@
 <div class="statistics-container">
-    <h2 class="title">Statistics</h2>
+    <h2 class="title">Expense details <span>{{dateRangeForm.get('month')?.value | mapMonths}},
+            {{dateRangeForm.get('year')?.value}}</span></h2>
     <div class="dropdown-section">
         <div class="left-section">
             <h3>Customize Your Date Range</h3>
-            <form [formGroup]="dateRangeForm" (submit)="updateChartData()">
+            <form [formGroup]="dateRangeForm">
                 <div class="inputs-wrapper">
                     <mat-form-field appearance="outline">
                         <mat-label>Year</mat-label>
-                        <mat-select formControlName="year">
+                        <mat-select formControlName="year" (ngModelChange)="updateChartData()">
                             <mat-option [value]="year" *ngFor="let year of yearsData">{{year}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Month</mat-label>
-                        <mat-select formControlName="month">
+                        <mat-select formControlName="month" (ngModelChange)="updateChartData()">
                             <mat-option value="1">January</mat-option>
                             <mat-option value="2">February</mat-option>
                             <mat-option value="3">March</mat-option>
@@ -29,8 +30,6 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-
-                <button mat-raised-button color="primary">Get Report</button>
             </form>
             <div class="amounts-section" *ngIf="monthData">
                 <p>Income : <span>{{amount.income | currencyFormatter}}</span></p>

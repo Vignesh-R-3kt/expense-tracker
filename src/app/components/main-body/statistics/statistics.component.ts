@@ -68,6 +68,8 @@ export class StatisticsComponent implements OnInit {
   updateChartData() {
     this.loader.show();
     const formValue = this.dateRangeForm.value;
+    console.log(formValue);
+
     this.api.fetchUserdata(formValue.month, formValue.year).subscribe((res: any) => {
       this.monthData = res;
       if (this.monthData) {

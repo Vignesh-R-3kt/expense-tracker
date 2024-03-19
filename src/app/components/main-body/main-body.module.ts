@@ -18,6 +18,7 @@ import { DeleteDialogComponent } from './dashboard/delete-dialog/delete-dialog.c
 import { CalculatorComponent } from './calculator/calculator.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { DataTablesModule } from 'angular-datatables';
+import { MapMonthsPipe } from 'src/app/pipes/map-months.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DataTablesModule } from 'angular-datatables';
     StatisticsComponent,
     CurrencyFormatterPipe,
     DeleteDialogComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    MapMonthsPipe,
   ],
   imports: [
     CommonModule,
