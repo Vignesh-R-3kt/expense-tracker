@@ -13,7 +13,7 @@ export class GoogleAuthService {
 
   login() {
     this.googleAuth.signInWithPopup(new GoogleAuthProvider).then((res: any) => {
-      sessionStorage.setItem('userInfo', JSON.stringify(res));
+      localStorage.setItem('userInfo', JSON.stringify(res));
       this.router.navigate(['main-body']);
     }).catch((err: any) => {
       console.log(err);
@@ -22,7 +22,7 @@ export class GoogleAuthService {
 
   logout() {
     this.googleAuth.signOut().then((res: any) => {
-      sessionStorage.clear();
+      localStorage.clear();
       this.router.navigate(['login']);
       this.snakbar.success('Successfully logged out')
     })

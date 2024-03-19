@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   constructor(private googleAuth: GoogleAuthService, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    const userInfo = JSON.parse(sessionStorage.getItem('userInfo') || '');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '');
     this.userName = userInfo.additionalUserInfo.profile.name;
     this.profileImg = userInfo.additionalUserInfo.profile.picture;
   }

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private googleAuth: GoogleAuthService) { }
 
   ngOnInit(): void {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   login() {

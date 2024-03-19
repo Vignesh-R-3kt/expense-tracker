@@ -10,7 +10,7 @@ export class ApiService {
   private userID: string;
 
   constructor(private http: HttpClient) {
-    const userInfo = JSON.parse(window.sessionStorage.getItem('userInfo') || '');
+    const userInfo = JSON.parse(window.localStorage.getItem('userInfo') || '');
     this.userID = userInfo.user.uid;
   }
 
