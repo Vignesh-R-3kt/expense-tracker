@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LoaderService } from './services/loader.service';
 
 @Component({
@@ -9,11 +9,12 @@ import { LoaderService } from './services/loader.service';
 export class AppComponent implements OnInit {
   isLoaderOpen: boolean = false;
 
-  constructor(private loader: LoaderService) { }
+  constructor(private loader: LoaderService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.loader.getLoaderStatus().subscribe((res: boolean) => {
       this.isLoaderOpen = res;
+      this.cdr.detectChanges();
     })
   }
 
