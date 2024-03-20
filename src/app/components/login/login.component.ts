@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { GoogleAuthService } from './../../services/google-auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,11 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  userInfo: any;
 
-  constructor(private googleAuth: GoogleAuthService) { }
+  constructor(private googleAuth: GoogleAuthService, private router: Router) { }
 
   ngOnInit(): void {
-    localStorage.clear();
+    // localStorage.clear();
+    const userStorageData = localStorage.getItem('userInfo');
+
+    if (userStorageData) {
+      this.userInfo = JSON.parse(userStorageData);
+    } else {
+      return;
+    }
+
+    this.userInfo.credential.accessToken && this.router.navigate(["/main-body"]);
   }
 
   login() {
