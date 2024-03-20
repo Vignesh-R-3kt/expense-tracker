@@ -23,7 +23,7 @@
                         (click)="isIncomeVisible = false">visibility_off</mat-icon>
                 </h3>
                 <input type="number" #inputField [(ngModel)]="incomeAmt" placeholder="Enter Income"
-                    *ngIf="isIncomeEditable">
+                    *ngIf="isIncomeEditable" (keypress)="handleKeyInput($event)">
             </li>
 
             <!-- Expense Card  -->

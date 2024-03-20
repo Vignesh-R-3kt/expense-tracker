@@ -70,6 +70,12 @@ export class DashboardComponent implements OnInit {
     };
   }
 
+  handleKeyInput(e: any) {
+    if (e.charCode === 13) {
+      this.saveIncomeData();
+    }
+  }
+
   reInitializeTable() {
     $('#expense-table').DataTable().destroy();
     setTimeout(() => {
