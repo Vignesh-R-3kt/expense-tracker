@@ -6,17 +6,6 @@
   align-items: center;
   height: 100%;
 
-  // .logo-wrapper {
-  //   margin-bottom: 48px;
-  //   display: flex;
-  //   justify-content: center;
-
-  //   img {
-  //     width: 80%;
-  //     object-fit: contain;
-  //   }
-  // }
-
   .navitems-wrapper {
     display: flex;
     flex-direction: column;
@@ -25,6 +14,8 @@
     padding: 24px 12px;
     gap: 36px;
     border-radius: 8px;
+    border: 1px solid #cccccc;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     li {
       width: 100%;
