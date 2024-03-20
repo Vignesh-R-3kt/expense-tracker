@@ -20,6 +20,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     NotFoundComponent,
     NavbarComponent,
     LoaderComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatDatepickerModule,
     HttpClientModule,
     DataTablesModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

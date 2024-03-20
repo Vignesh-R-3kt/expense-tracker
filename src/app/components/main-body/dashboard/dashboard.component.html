@@ -1,8 +1,8 @@
 <div class="dashboard-container">
     <div class="cards-container">
-        <div class="title-section">
+        <!-- <div class="title-section">
             <h2 class="title">Category Details</h2>
-        </div>
+        </div> -->
         <ul class="cards-wrapper">
 
             <!-- Income Card -->
@@ -94,8 +94,11 @@
                 </h3>
             </li>
         </ul>
+        <div class="graph-wrapper">
+            <div id="container" class="dashboard-chart"></div>
+        </div>
     </div>
-    <div class="expense-details-container">
+    <div class="table-container">
         <div class="table-wrapper">
             <div class="table">
                 <table id="expense-table" datatable [dtOptions]="dt0ptions">
@@ -116,16 +119,13 @@
                             <td>{{expense.date}}</td>
                             <td class="category">{{expense.category }}</td>
                             <td class="description">{{expense.description}}</td>
-                            <td><button matTooltip="Delete" (click)="deleteData(i)">Delete</button></td>
+                            <td style="text-align: center;"><button matTooltip="Delete"
+                                    (click)="deleteData(i)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
-        <div class="graph-wrapper">
-            <div id="container" class="dashboard-chart"></div>
-        </div>
-
     </div>
+
 </div>

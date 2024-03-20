@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="left-section">
+            <h2><span>Hello,</span> {{ userInfo.additionalUserInfo.profile.name }}, <span>{{ greetings }}</span>
+                <img src="../../../assets/icons/morning.png" *ngIf="time == 0" alt="morning icon">
+                <img src="../../../assets/icons/afternoon.png" *ngIf="time == 1" alt="morning icon">
+                <img src="../../../assets/icons/evening.png" *ngIf="time == 2" alt="morning icon">
+            </h2>
+        </div>
+        <div class="img-wrapper">
+            <img [src]="userInfo.additionalUserInfo.profile.picture" alt="profile-img">
+        </div>
+    </div>
+</div>

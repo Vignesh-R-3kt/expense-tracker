@@ -43,7 +43,8 @@
         </div>
     </div>
     <div class="table-chart-wrapper" *ngIf="monthData">
-        <h3>Expenses Details :</h3>
+        <h3>Expenses List - {{dateRangeForm.get('month')?.value | mapMonths}},
+            {{dateRangeForm.get('year')?.value}}</h3>
         <div class="table-wrapper">
             <div class="table">
                 <table id="stats-table" datatable [dtOptions]="dt0ptions">

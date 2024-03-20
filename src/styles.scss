@@ -3,18 +3,22 @@
 
 .table {
   padding-right: 8px;
+
   .dataTables_wrapper {
     .dataTables_length {
-      margin-bottom: 2px;
+      margin-bottom: 12px;
+
       label {
         font-size: 12px;
       }
+
       select {
         font-size: 12px;
       }
     }
     .dataTables_filter {
       font-size: 12px;
+
       input {
         padding: 4px;
         width: 60%;
@@ -23,9 +27,12 @@
     }
     .dataTables_info {
       font-size: 12px;
+      margin-top: 12px;
     }
     .dataTables_paginate {
       font-size: 12px;
+      margin-top: 12px;
+
       a {
         padding: 8px 6px;
         margin: 0;
@@ -33,6 +40,7 @@
       span {
         .paginate_button {
           padding: 4px 8px;
+          margin: 0 2px;
         }
       }
     }

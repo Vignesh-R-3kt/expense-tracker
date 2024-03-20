@@ -1,26 +1,30 @@
 <div class="navbar-container">
-
+    <!-- 
     <div class="logo-wrapper">
-        <img src="../../../../assets/images/3.png" alt="logo">
-    </div>
+        <img src="../../../../assets/images/logo-2.png" alt="logo">
+    </div> -->
 
     <ul class="navitems-wrapper">
         <li routerLinkActive="active">
-            <a routerLink="./dashboard" (click)="handleMenu()"> <mat-icon>dashboard</mat-icon> <span>Dashboard</span>
+            <a routerLink="./dashboard" matTooltip="Dashboard" (click)="handleMenu()"> <mat-icon>dashboard</mat-icon>
             </a>
         </li>
         <li routerLinkActive="active">
-            <a routerLink="./statistics" (click)="handleMenu()"><mat-icon> map</mat-icon> <span>Statistics</span> </a>
+            <a routerLink="./statistics" matTooltip="Statistics" (click)="handleMenu()"><mat-icon> map</mat-icon></a>
         </li>
         <li routerLinkActive="active">
-            <a routerLink="./calculator" (click)="handleMenu()"><mat-icon> rate_review</mat-icon>
-                <span>Calculator</span> </a>
+            <a routerLink="./calculator" matTooltip="Calculator" (click)="handleMenu()"><mat-icon>
+                    rate_review</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a (click)="logout()" matTooltip="Logout"><mat-icon>power_settings_new</mat-icon></a>
         </li>
     </ul>
 
-    <div class="logout-wrapper">
+    <!-- <div class="logout-wrapper">
         <img [src]="profileImg" alt="profileImg">
         <h5>{{userName}}</h5>
         <button mat-raised-button (click)="logout()"><mat-icon>power_settings_new</mat-icon> Logout</button>
-    </div>
+    </div> -->
 </div>

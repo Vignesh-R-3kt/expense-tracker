@@ -1,12 +1,13 @@
 <div class="main-body-container">
     <div class="navbar-wrapper" [ngClass]="{'active' : isNavbarOpen}">
         <app-navbar (closeMenu)="closeMenu($event)"></app-navbar>
-        <button class="hamburget-wrapper" (click)="isNavbarOpen = !isNavbarOpen">
+        <!-- <button class="hamburget-wrapper" (click)="isNavbarOpen = !isNavbarOpen">
             <mat-icon *ngIf="!isNavbarOpen">menu</mat-icon>
             <mat-icon *ngIf="isNavbarOpen">close</mat-icon>
-        </button>
+        </button> -->
     </div>
     <div class="main-content-wrapper">
+        <app-header></app-header>
         <router-outlet></router-outlet>
     </div>
 </div>

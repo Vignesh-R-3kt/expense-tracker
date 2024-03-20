@@ -1,15 +1,19 @@
 .main-body-container {
   height: 100vh;
   display: flex;
+  background: #dee3e8;
 
   .navbar-wrapper {
-    width: 200px;
+    width: 80px;
     flex-shrink: 0;
-    background: #191919;
   }
 
   .main-content-wrapper {
     flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 32px;
   }
 }
 

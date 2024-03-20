@@ -10,7 +10,7 @@
 
 body {
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 ul {
@@ -86,10 +86,11 @@ input[type="number"] {
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 
   &-thumb {
-    background: #006aff;
-    border-radius: 12px;
+    background: #334d6c;
+    border-radius: 2px;
   }
 }
 

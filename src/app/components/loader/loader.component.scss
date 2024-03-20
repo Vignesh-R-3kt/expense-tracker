@@ -9,14 +9,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(10px);
 
   .text-wrapper {
     p {
-      font-size: 22px;
-      font-weight: 300;
+      font-size: 26px;
+      font-weight: 600;
       color: #1f1f1f;
-      letter-spacing: 4px;
+      animation: stretch2 1s linear infinite alternate-reverse;
     }
+  }
+}
+
+@keyframes stretch2 {
+  0% {
+    letter-spacing: 6px;
+  }
+
+  100% {
+    letter-spacing: 0;
   }
 }
