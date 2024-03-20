@@ -75,6 +75,12 @@ export class StatisticsComponent implements OnInit {
         this.updateUserData(res);
         this.reInitializeTable();
         this.reinitializeChart();
+      } else {
+        this.amount = {
+          income: 0,
+          balance: 0,
+          expense: 0
+        };
       }
       setTimeout(() => {
         this.loader.hide();
