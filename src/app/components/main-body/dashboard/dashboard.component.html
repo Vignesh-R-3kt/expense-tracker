@@ -58,12 +58,18 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Expense Category</mat-label>
                         <mat-select formControlName="category">
-                            <mat-option value="food">Food<mat-icon> fastfood</mat-icon></mat-option>
-                            <mat-option value="travel">Travel<mat-icon>card_travel</mat-icon></mat-option>
-                            <mat-option value="shopping">Shopping <mat-icon>add_shopping_cart</mat-icon></mat-option>
-                            <mat-option value="grocery">Grocery <mat-icon> local_grocery_store</mat-icon></mat-option>
-                            <mat-option value="movie">Movie<mat-icon>movie</mat-icon></mat-option>
-                            <mat-option value="others">Others<mat-icon> local_atm</mat-icon></mat-option>
+                            <mat-option style="color: #334D6C;" value="food">Food<mat-icon>
+                                    fastfood</mat-icon></mat-option>
+                            <mat-option style="color: #DE686C; "
+                                value="travel">Travel<mat-icon>card_travel</mat-icon></mat-option>
+                            <mat-option style="color: #6A5676;" value="shopping">Shopping
+                                <mat-icon>add_shopping_cart</mat-icon></mat-option>
+                            <mat-option style="color: #E3A787;" value="grocery">Grocery <mat-icon>
+                                    local_grocery_store</mat-icon></mat-option>
+                            <mat-option style="color: #AF6272;"
+                                value="movie">Movie<mat-icon>movie</mat-icon></mat-option>
+                            <mat-option style="color: #80944C;" value="others">Others<mat-icon>
+                                    local_atm</mat-icon></mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -113,7 +119,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let expense of expenses; let i = index">
+                        <tr *ngFor="let expense of expenses; let i = index" class="{{expense.category}}">
                             <td>{{ i + 1 }}</td>
                             <td>{{expense.amount | currencyFormatter}}</td>
                             <td>{{expense.date}}</td>

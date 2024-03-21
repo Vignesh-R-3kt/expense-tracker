@@ -231,16 +231,12 @@
 
             td {
               font-size: 12px;
-              color: #191919;
+              // color: #191919;
               padding: 8px 12px;
               text-transform: capitalize;
-              font-weight: 400;
+              font-weight: 500;
               border-bottom: 1px solid #e8e8e8;
               text-wrap: wrap;
-
-              &.category {
-                font-weight: 300;
-              }
 
               &.description {
                 width: 35%;
@@ -274,6 +270,42 @@
         }
       }
     }
+  }
+}
+
+.food {
+  td {
+    color: #334d6c;
+  }
+}
+
+.travel {
+  td {
+    color: #de686c;
+  }
+}
+
+.shopping {
+  td {
+    color: #6a5676;
+  }
+}
+
+.grocery {
+  td {
+    color: #e3a787;
+  }
+}
+
+.movie {
+  td {
+    color: #af6272;
+  }
+}
+
+.others {
+  td {
+    color: #80944c;
   }
 }
 
