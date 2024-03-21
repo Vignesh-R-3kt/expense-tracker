@@ -277,81 +277,25 @@
   }
 }
 
-// @media only screen and (max-width: 1000px) {
-//   .dashboard-container {
-//     display: flex;
-//     flex-direction: column;
-//     overflow: auto;
-//     width: 100%;
-//     z-index: 9;
-//     margin-top: 12px;
+@media screen and (max-width: 900px) {
+  .dashboard-container {
+    .cards-container {
+      flex-direction: column;
+      align-items: center;
 
-//     .cards-container {
-//       display: flex;
-//       background: #ffffff;
-//       width: 100%;
+      .cards-wrapper {
+        width: 100%;
 
-//       .title-section {
-//         .title {
-//           text-align: center;
-//           font-size: 12px;
-//           font-weight: 400;
-//           color: #525256;
-//           margin-bottom: 0;
-//           border-bottom: 1px solid rgba(204, 204, 204, 0.3137254902);
-//         }
-//       }
+        li {
+          h3 {
+            font-size: 22px;
+          }
+        }
+      }
 
-//       ul {
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         width: 100%;
-
-//         li {
-//           width: 100%;
-//           padding: 0;
-
-//           .card-title {
-//             display: flex;
-//             justify-content: space-between;
-//             padding-bottom: 4px;
-//             margin-bottom: 8px;
-//             border-bottom: 2px solid #ebebeb;
-//             h4 {
-//               font-size: 8px;
-//               line-height: 1;
-//               color: #656565;
-//               font-weight: 400;
-//               padding: 2px 4px;
-//             }
-//             button {
-//               font-size: 8px;
-//               mat-icon {
-//                 font-size: 14px;
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-
-//     .expense-details-container {
-//       display: flex;
-//       flex-direction: column;
-//       height: auto;
-//       justify-content: space-between;
-//       width: 100%;
-
-//       .table-wrapper {
-//         overflow: auto;
-//         .table {
-//           overflow: auto;
-//         }
-//       }
-//       .graph-wrapper {
-//         height: auto;
-//       }
-//     }
-//   }
-// }
+      .graph-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}

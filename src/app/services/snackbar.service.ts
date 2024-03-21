@@ -14,6 +14,7 @@ export class SnackbarService {
       horizontalPosition: 'end',
       verticalPosition: 'top',
       panelClass: 'success-message'
+
     })
   }
 

@@ -56,3 +56,26 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .table-chart-wrapper {
+    padding: 12px !important;
+  }
+
+  table {
+    th {
+      min-width: 70px;
+
+      &:first-child {
+        min-width: 50px;
+      }
+    }
+
+    td {
+      &:first-child {
+        text-align: center;
+        font-weight: 700 !important;
+      }
+    }
+  }
+}

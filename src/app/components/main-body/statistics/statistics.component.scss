@@ -211,72 +211,66 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .statistics-container {
-    padding: 12px 8px;
-    margin-top: 42px;
+    padding: 12px;
 
-    h2 {
-      margin-bottom: 0 !important;
+    .title {
       font-size: 18px;
     }
+
     .dropdown-section {
-      display: flex;
       flex-direction: column;
-      .left-section {
+
+      .left-section,
+      .right-section {
         width: 100%;
-        margin-top: 24px;
+      }
+
+      .left-section {
         gap: 12px;
+        padding: 24px;
+
         h3 {
-          font-size: 12px;
-          margin: 0;
+          border: none;
+          padding-bottom: 0;
+          margin-bottom: 12px;
         }
+
         form {
-          font-size: 12px;
           .inputs-wrapper {
-            display: flex;
             flex-direction: column;
-            button {
-              font-size: 12px;
+            width: 90%;
+            gap: 18px;
+            align-items: center;
+
+            mat-form-field {
+              width: 90%;
             }
           }
         }
 
         .amounts-section {
-          margin: 2px;
-          P {
-            font-size: 12px;
-            span {
-              padding: 6px;
+          margin: 6px 0;
+          width: 100%;
+          flex-direction: column;
+
+          p {
+            flex-direction: row;
+            white-space: nowrap;
+            font-weight: 500;
+
+            &:first-child {
+              align-self: flex-start;
             }
-          }
-        }
-      }
 
-      .right-section {
-        width: 100%;
-        #stats-container {
-          .highcharts-title {
-            font-size: 12px;
-          }
-        }
-      }
-    }
-    .table-chart-wrapper {
-      margin-bottom: 24px;
-      h3 {
-        font-size: 12px;
+            &:last-child {
+              align-self: flex-end;
+            }
 
-        tr {
-          th {
-            font-size: 10px !important;
-          }
-
-          td {
-            font-size: 10px;
-
-            button {
-              font-size: 8px;
+            span {
+              font-size: 12px;
+              white-space: nowrap;
             }
           }
         }

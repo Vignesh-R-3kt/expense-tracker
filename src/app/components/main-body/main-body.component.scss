@@ -19,51 +19,25 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .main-body-container {
-    display: block;
-    width: 100%;
-    overflow: scroll;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    .main-content-wrapper {
+      overflow-x: auto;
+      width: 100%;
+    }
 
     .navbar-wrapper {
-      position: fixed;
+      width: 100%;
+      position: sticky;
       top: 0;
-      z-index: 99;
-      bottom: 0;
-      width: 80vw;
-      left: -80vw;
-      transition: all 0.4s ease;
-
-      &.active {
-        left: 0;
-
-        &::after {
-          width: 20vw;
-        }
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 0;
-        left: 100%;
-        top: 0;
-        backdrop-filter: blur(6px);
-      }
-
-      .hamburget-wrapper {
-        position: absolute;
-        left: calc(100% + 18px);
-        top: 12px;
-        background: none;
-        border: none;
-        z-index: 2;
-      }
-
-      .main-content-wrapper {
-        flex-shrink: 1;
-      }
+      height: 76px;
+      z-index: 2;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      backdrop-filter: blur(4px);
     }
   }
 }

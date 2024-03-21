@@ -62,10 +62,11 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .wrapper {
+    height: 60vh;
     .calculator {
-      width: 80%;
+      width: 90%;
     }
   }
 }

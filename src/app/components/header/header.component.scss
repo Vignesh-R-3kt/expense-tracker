@@ -45,3 +45,36 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .container {
+    margin: 12px;
+    .wrapper {
+      width: 100%;
+      .left-section {
+        h2 {
+          font-size: 16px;
+          line-height: 22px;
+
+          span {
+            font-size: 14px;
+            line-height: 22px;
+
+            &.greetings {
+              display: block;
+            }
+          }
+
+          img {
+            display: none;
+          }
+        }
+      }
+
+      .img-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

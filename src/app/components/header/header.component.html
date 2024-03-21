@@ -1,7 +1,8 @@
 <div class="container">
     <div class="wrapper">
         <div class="left-section">
-            <h2><span>Hello,</span> {{ userInfo.additionalUserInfo.profile.name }}, <span>{{ greetings }}</span>
+            <h2><span>Hello,</span> {{ userInfo.additionalUserInfo.profile.name }}, <span class="greetings">{{ greetings
+                    }}</span>
                 <img src="../../../assets/icons/morning.png" *ngIf="time == 0" alt="morning icon">
                 <img src="../../../assets/icons/afternoon.png" *ngIf="time == 1" alt="morning icon">
                 <img src="../../../assets/icons/evening.png" *ngIf="time == 2" alt="morning icon">
