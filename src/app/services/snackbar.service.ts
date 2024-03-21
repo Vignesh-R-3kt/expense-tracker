@@ -10,7 +10,7 @@ export class SnackbarService {
 
   success(message: string) {
     this.snackbar.open(message, 'dismiss', {
-      duration: 20000,
+      duration: 2000,
       horizontalPosition: 'end',
       verticalPosition: 'top',
       panelClass: 'success-message'
